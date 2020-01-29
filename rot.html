@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<meta charset="utf-8" />
+	<title>w3W1LLh3lPy0U</title>
+	<style type="text/css">
+		body {
+			background-color: white;
+			font-family: Sans-Serif;
+			text-align: center;
+		}
+		h1 {
+			margin-bottom: 0.1em;
+		}
+		h2 {
+			font-size: 1em;
+			font-weight: normal;
+			margin: 0 auto 5em auto;
+		}
+		.arrow {
+			font-size: 2.0em;
+			font-weight: bold;
+			margin: 0;
+		}
+		.warning {
+			background-color: orange;
+			padding: 0.4em 0.75em;
+		}
+	</style>
+	
+	<!-- rot13 implementation from http://stackoverflow.com/a/617685/987044 -->
+	<script type="text/javascript">
+		function rot(s, i) {
+			return s.replace(/[a-zA-Z]/g, function (c) {
+				return String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + i) ? c : c - 26);
+			});
+		}
+		function update() {
+			document.getElementById('output').value = rot(document.getElementById('input').value, +document.getElementById('rot').value);
+		}
+	</script>
+	
+</head>
+<body>
+
+<h1>rot</h1>
+
+<noscript><p><span class="warning"><em>Please enable JavaScript to use this page.</em></span></p></noscript>
+
+<p><textarea id="input" cols="80" rows="1" onkeyup="update()" onchange="update()" autofocus></textarea></p>
+
+<p class="arrow">↓</p>
+
+<p><select id="rot" onchange="update()">
+	<option value="1" selected>ROT1</option>
+	<option value="13">ROT13</option>
+</select></p>
+
+<p class="arrow">↓</p>
+
+<p><textarea id="output" cols="80" rows="1" readonly></textarea></p>
+
+</body>
+</html>
